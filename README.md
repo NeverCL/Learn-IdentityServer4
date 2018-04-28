@@ -134,6 +134,8 @@ AlwaysIncludeUserClaimsInIdToken = true,  // 默认为false,
 1. iat: jwt的签发时间
 1. jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。
 
+### 示例：
+
 Client:
 
 ```json
