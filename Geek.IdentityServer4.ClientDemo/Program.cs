@@ -10,34 +10,20 @@ namespace Geek.IdentityServer4.ClientDemo
     {
         static async Task Main(string[] args)
         {
-            await ClientTests();
-            // await RoClientTests();
-        }
-
-        private static async Task RoClientTests()
-        {
-            var disco = await DiscoveryClient.GetAsync("https://sso.neverc.cn"); // Policy.RequireHttps = true
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "ro.client", "secret");
-            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync("alice", "password", "api1");
-
             var client = new HttpClient();
-            client.SetBearerToken(tokenResponse.AccessToken);
-            var response = await client.GetAsync("http://localhost:5001/identity");
-            var content = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JArray.Parse(content));
-        }
-
-        private static async Task ClientTests()
-        {
-            var disco = await DiscoveryClient.GetAsync("https://sso.neverc.cn"); // Policy.RequireHttps = true
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "client", "secret");
-            var tokenResponse = await tokenClient.RequestClientCredentialsAsync("api1");
-
-            var client = new HttpClient();
-            client.SetBearerToken(tokenResponse.AccessToken);
-            var response = await client.GetAsync("http://localhost:5001/identity");
-            var content = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JArray.Parse(content));
+            var tokenUrl = (await client.GetDiscoveryDocumentAsync("http://localhost:5000")).TokenEndpoint;
+            var token = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                RequestUri = new Uri(tokenUrl),
+                ClientId = "cli",
+                ClientSecret = "",
+                Scope = "api1"
+            });
+            Console.WriteLine(token.Json);
+            Console.WriteLine(token.AccessToken);
+            client.SetBearerToken(token.AccessToken);
+            var response = await client.GetStringAsync("http://localhost:5001/identity");
+            Console.WriteLine(response);
         }
     }
 }
