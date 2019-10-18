@@ -19,13 +19,21 @@ namespace Geek.IdentityServer4.ApiDemo
             services.AddControllers();
 
             services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(opt =>
-                {
-                    opt.ApiName = "api1";
+                .AddJwtBearer("Bearer", opt =>
+                 {
+                     opt.MetadataAddress = "http://localhost:5000";
+                     //  opt.Authority = "http://localhost:5000";
+                     opt.RequireHttpsMetadata = false;
 
-                    opt.Authority = "http://localhost:5000";
-                    opt.RequireHttpsMetadata = false;
-                });
+                     opt.Audience = "api1";
+                 });
+            //.AddIdentityServerAuthentication("Bearer1", opt =>
+            // {
+            //     opt.ApiName = "api1";
+
+            //     opt.Authority = "http://localhost:5000";
+            //     opt.RequireHttpsMetadata = false;
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +46,7 @@ namespace Geek.IdentityServer4.ApiDemo
 
             app.UseAuthentication();
 
-            //app.UseMvc();
+            app.UseAuthorization();
 
             app.UseRouting();
 

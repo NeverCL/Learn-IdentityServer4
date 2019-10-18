@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geek.IdentityServer4.Client
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geek.IdentityServer4.ApiDemo", "Geek.IdentityServer4.ApiDemo\Geek.IdentityServer4.ApiDemo.csproj", "{6CB2544A-E75B-4663-8B3C-E4C4AE71B1A2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geek.IdentityServer4.IdentityServer4Demo", "Geek.IdentityServer4.IdentityServer4Demo\Geek.IdentityServer4.IdentityServer4Demo.csproj", "{BF986FA5-79F0-4495-92B7-9314E7F18BE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6CB2544A-E75B-4663-8B3C-E4C4AE71B1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CB2544A-E75B-4663-8B3C-E4C4AE71B1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CB2544A-E75B-4663-8B3C-E4C4AE71B1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF986FA5-79F0-4495-92B7-9314E7F18BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF986FA5-79F0-4495-92B7-9314E7F18BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF986FA5-79F0-4495-92B7-9314E7F18BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF986FA5-79F0-4495-92B7-9314E7F18BE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

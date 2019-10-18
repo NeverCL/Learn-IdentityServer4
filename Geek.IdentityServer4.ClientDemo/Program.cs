@@ -15,8 +15,8 @@ namespace Geek.IdentityServer4.ClientDemo
             var token = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
                 RequestUri = new Uri(tokenUrl),
-                ClientId = "cli",
-                ClientSecret = "",
+                ClientId = "client",
+                ClientSecret = "secret",
                 Scope = "api1"
             });
             Console.WriteLine(token.Json);

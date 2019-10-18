@@ -14,6 +14,7 @@ namespace Geek.IdentityServer4.IdentityServer4Demo
     {
         public static void Main(string[] args)
         {
+            // open http://localhost:5000/.well-known/openid-configuration
             BuildWebHost(args).Run();
         }
 
